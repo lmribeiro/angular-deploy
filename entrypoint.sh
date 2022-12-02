@@ -14,7 +14,7 @@ else
 	echo $'\n' "------ CONFIG SUCCESSFUL! ---------------------" $'\n'
 fi
 
-rsync --progress -avzh dist/ \
+rsync --progress -avzh \
 	--exclude='.git/' \
 	--exclude='.git*' \
 	--exclude='.editorconfig' \
@@ -26,7 +26,13 @@ rsync --progress -avzh dist/ \
 	--exclude='node_modules/' \
 	--exclude='tsconfig.*' \
 	--exclude='src/' \
-	--exclude='package.*' \
+	--exclude='package*' \
+	--exclude='server.ts' \
+	--exclude='action.yml' \
+	--exclude='.vscode' \
+	--exclude='.prettierrc' \
+	--exclude='.browserslistrc' \
+	--exclude='angular.json' \
 	-e "ssh -i /root/.ssh/id_rsa" \
 	--rsync-path="sudo rsync " . $1@$2:$3
 
