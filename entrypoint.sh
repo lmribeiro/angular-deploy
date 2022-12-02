@@ -20,6 +20,11 @@ rsync --progress -avzh \
 	--exclude='.editorconfig' \
 	--exclude='.styleci.yml' \
 	--exclude='.idea/' \
+	--exclude='.vscode' \
+	--exclude='.prettierrc' \
+	--exclude='.browserslistrc' \
+	--exclude='action.yml' \
+	--exclude='angular.json' \
 	--exclude='Dockerfile' \
 	--exclude='readme.md' \
 	--exclude='README.md' \
@@ -28,11 +33,7 @@ rsync --progress -avzh \
 	--exclude='src/' \
 	--exclude='package*' \
 	--exclude='server.ts' \
-	--exclude='action.yml' \
-	--exclude='.vscode' \
-	--exclude='.prettierrc' \
-	--exclude='.browserslistrc' \
-	--exclude='angular.json' \
+	--exclude='karma.conf.js' \
 	-e "ssh -i /root/.ssh/id_rsa" \
 	--rsync-path="sudo rsync " . $1@$2:$3
 
