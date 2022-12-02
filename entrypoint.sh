@@ -23,8 +23,12 @@ rsync --progress -avzh \
 	--exclude='Dockerfile' \
 	--exclude='readme.md' \
 	--exclude='README.md' \
+	--exclude='node_modules/' \
+	--exclude='tsconfig.*' \
+	--exclude='src/' \
+	--exclude='package.*' \
 	-e "ssh -i /root/.ssh/id_rsa" \
-	--rsync-path="sudo rsync" . $1@$2:$3
+	--rsync-path="sudo rsync dist/" . $1@$2:$3
 
 if [ $? -eq 0 ]
 then
