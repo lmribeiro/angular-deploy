@@ -14,7 +14,7 @@ else
 	echo $'\n' "------ CONFIG SUCCESSFUL! ---------------------" $'\n'
 fi
 
-rsync --progress -avzh \
+rsync --progress -avzh dist/ \
 	--exclude='.git/' \
 	--exclude='.git*' \
 	--exclude='.editorconfig' \
@@ -28,7 +28,7 @@ rsync --progress -avzh \
 	--exclude='src/' \
 	--exclude='package.*' \
 	-e "ssh -i /root/.ssh/id_rsa" \
-	--rsync-path="sudo rsync dist/" . $1@$2:$3
+	--rsync-path="sudo rsync " . $1@$2:$3
 
 if [ $? -eq 0 ]
 then
