@@ -34,7 +34,7 @@ rsync --progress -avzh \
 	--exclude='package*' \
 	--exclude='server.ts' \
 	--exclude='karma.conf.js' \
-	-e "ssh -o StrictHostKeyChecking=no" \
+	-e "ssh -i /root/.ssh/id_rsa" \
 	--rsync-path="sudo rsync " . $1@$2:$3
 
 if [ $? -eq 0 ]
